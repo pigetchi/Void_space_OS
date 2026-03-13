@@ -2,16 +2,23 @@ package main
 
 import (
 	"fmt"
+	"os"
+
+	"github.com/klauspost/cpuid/v2"
 )
 
-func fetch() {
-	art := `
+func fetch() { //analog neofetch
+	fmt.Println("----------------------------") //system information
+	fmt.Println("OS: Void Space V0.2")
+	fmt.Println("Cpu", cpuid.CPU.BrandName)
+	fmt.Println("----------------------------")
+	art := `        //art
       @@****@@      
    @%**********#@   
-  %*  +*******  *%      OS Void space V 0.1 
-@%****************%@
+  %*  +*******  *%    
+@%****************%@ 
 @#****************#@
-@%#######%%%%%%%%%%@
+@%################%@
 @@@@@@@@@@@@@@@@@@@@
 @@@@@          @@@@@
   @@@*        +@@@  
@@ -21,17 +28,17 @@ func fetch() {
 	fmt.Println(art)
 }
 
-func math() {
-	fmt.Println("Калькулятор")
+func math() { //calculator
+	fmt.Println("calculator")
 	var znack string
 	var b float64
 	var a float64
 	var rav float64
-	fmt.Println("Введите знак")
+	fmt.Println("Enter sign")
 	fmt.Scan(&znack)
-	fmt.Println("Введите a")
+	fmt.Println("Enter a")
 	fmt.Scan(&a)
-	fmt.Println("Введите b")
+	fmt.Println("Enter b")
 	fmt.Scan(&b)
 	switch {
 	case znack == "+":
@@ -46,16 +53,39 @@ func math() {
 	fmt.Println(rav)
 }
 
+func sample() {
+	file, err := os.Create("sample.go")
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	data := `
+	package main
+
+import (
+	"fmt"
+
+	"os"
+)
+
+func main() {
+
+}
+`
+	file.WriteString(data)
+
+}
+
 func help() {
-	fmt.Println("match - калькулятор")
-	fmt.Println("fetch - информация о системе")
-	fmt.Println("help - это меню")
+	fmt.Println("match - calculator")
+	fmt.Println("fetch - system information")
+	fmt.Println("help - available commands")
+	fmt.Println("sample - create a template Go")
 }
 
 func main() {
 	var nad string
 	fetch()
-	fmt.Println("Привет Pig")
 
 	for {
 		fmt.Scan(&nad)
@@ -67,6 +97,8 @@ func main() {
 			fetch()
 		case nad == "help":
 			help()
+		case nad == "sample":
+			sample()
 		}
 	}
 
