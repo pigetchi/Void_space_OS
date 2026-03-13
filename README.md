@@ -1,9 +1,11 @@
-Привет всем! Этот проект не является операционной системой. Этот проект создан лишь для проверки моих знаний, так как я учу Go.
+Hello everyone! This project is not a real operating system. It is created solely to test my skills while I am learning Go.
 
-Функционал:
+Features:
 
-    Fetch — аналог fastfetch
+    Fetch — A fastfetch-like tool to display system information.
 
-    Match — простой калькулятор
+    Match — A simple calculator.
 
-    Help — все команды
+    Help — Displays a list of all available commands.
+
+    Sample — Generates a Go code template.
