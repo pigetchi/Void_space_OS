@@ -9,7 +9,7 @@ import (
 
 func fetch() { //analog neofetch
 	fmt.Println("----------------------------") //system information
-	fmt.Println("OS: Void Space V0.2")
+	fmt.Println("OS: Void Space V0.3")
 	fmt.Println("Cpu", cpuid.CPU.BrandName)
 	fmt.Println("----------------------------")
 	art := `        //art
@@ -69,7 +69,7 @@ import (
 )
 
 func main() {
-
+	fmt.Println("Hello, World!")
 }
 `
 	file.WriteString(data)
@@ -81,6 +81,7 @@ func help() {
 	fmt.Println("fetch - system information")
 	fmt.Println("help - available commands")
 	fmt.Println("sample - create a template Go")
+	fmt.Println("exit - exit")
 }
 
 func main() {
@@ -99,6 +100,8 @@ func main() {
 			help()
 		case nad == "sample":
 			sample()
+		case nad == "exit":
+			os.Exit(0)
 		}
 	}
 
