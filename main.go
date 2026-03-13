@@ -9,10 +9,10 @@ import (
 
 func fetch() { //analog neofetch
 	fmt.Println("----------------------------") //system information
-	fmt.Println("OS: Void Space V0.3")
+	fmt.Println("OS: Void Space V0.4")
 	fmt.Println("Cpu", cpuid.CPU.BrandName)
 	fmt.Println("----------------------------")
-	art := `        //art
+	art := `        
       @@****@@      
    @%**********#@   
   %*  +*******  *%    
@@ -49,6 +49,8 @@ func math() { //calculator
 		rav = a * b
 	case znack == "/":
 		rav = a / b
+	default:
+		fmt.Println("Error")
 	}
 	fmt.Println(rav)
 }
@@ -77,7 +79,7 @@ func main() {
 }
 
 func help() {
-	fmt.Println("match - calculator")
+	fmt.Println("math - calculator")
 	fmt.Println("fetch - system information")
 	fmt.Println("help - available commands")
 	fmt.Println("sample - create a template Go")
@@ -89,6 +91,8 @@ func main() {
 	fetch()
 
 	for {
+		fmt.Println(" ")
+		fmt.Print("V.S.>")
 		fmt.Scan(&nad)
 
 		switch {
@@ -102,6 +106,8 @@ func main() {
 			sample()
 		case nad == "exit":
 			os.Exit(0)
+		default:
+			fmt.Printf("command %s does not exist, type help for a list of commands", nad)
 		}
 	}
 
