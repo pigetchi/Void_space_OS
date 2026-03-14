@@ -9,7 +9,7 @@ import (
 
 func fetch() { //analog neofetch
 	fmt.Println("----------------------------") //system information
-	fmt.Println("OS: Void Space V0.4")
+	fmt.Println("OS: Void Space V0.5")
 	fmt.Println("Cpu", cpuid.CPU.BrandName)
 	fmt.Println("----------------------------")
 	art := `        
@@ -78,6 +78,49 @@ func main() {
 
 }
 
+/*func translator() {
+	var gaster map[string]string = map[string]string{
+		"A": "✌",
+		"B": "👌",
+		"C": "👍",
+		"D": "👎",
+		"E": "☜",
+		"F": "☞",
+		"G": "☝",
+		"H": "☟",
+		"I": "✋",
+		"J": "☺",
+		"K": "😐",
+		"L": "☹",
+		"M": "💣",
+		"N": "☠",
+		"O": "⚐",
+		"P": "🏱",
+		"Q": "✈",
+		"R": "☼",
+		"S": "💧",
+		"T": "❄",
+		"U": "🕆",
+		"V": "✞",
+		"W": "🕈",
+		"X": "✠",
+		"Y": "✡",
+		"Z": "☪",
+		"1": "📂",
+		"2": "📄",
+		"3": "🗏",
+		"4": "🗐",
+		"5": "🗄",
+		"6": "⌛",
+		"7": "🖮",
+		"8": "🖰",
+		"9": "🖲",
+		"0": "📁",
+	}
+	text := "HELLO"
+
+} */
+
 func help() {
 	fmt.Println("math - calculator")
 	fmt.Println("fetch - system information")
@@ -92,7 +135,7 @@ func main() {
 
 	for {
 		fmt.Println(" ")
-		fmt.Print("V.S.>")
+		fmt.Print("V.S.│~ ")
 		fmt.Scan(&nad)
 
 		switch {
