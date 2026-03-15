@@ -4,13 +4,19 @@ import (
 	"fmt"
 	"os"
 
+	"math/rand/v2"
+
 	"github.com/fatih/color"
 	"github.com/klauspost/cpuid/v2"
 )
 
+var level int
+var xp int
+var name string
+
 func fetch() { //analog fastfetch
 	fmt.Println("----------------------------") //system information
-	fmt.Println("OS: Void Space V0.6")
+	fmt.Println("OS: Void Space V0.7")
 	fmt.Println("Cpu", cpuid.CPU.BrandName)
 	fmt.Println("----------------------------")
 	art := color.BlueString(`        
@@ -125,11 +131,27 @@ func main() {
 func info() {
 	fmt.Println("-------------------------------")
 	fmt.Println("OS: Void Space")
-	fmt.Println("Version: V0.6")
+	fmt.Println("Version: V0.7")
 	fmt.Println("Created by: pigetchi")
 	fmt.Println("Vritten in: GO")
 	fmt.Println("License: MIT")
 	fmt.Println("-------------------------------")
+}
+
+func random() {
+	var nad int
+	var diop int
+	fmt.Println("enter a range from 1 to")
+	fmt.Scan(&diop)
+	num := rand.IntN(diop)
+	fmt.Println("guess")
+	fmt.Scan(nad)
+	switch {
+	case nad == num:
+		fmt.Println("you guessed it")
+	default:
+		fmt.Println("try again")
+	}
 }
 
 func help() {
@@ -138,6 +160,7 @@ func help() {
 	fmt.Println("help - available commands")
 	fmt.Println("sample - create a template Go")
 	fmt.Println("info - information about the program")
+	fmt.Println("random - guess the number")
 	fmt.Println("exit - exit")
 }
 
@@ -164,9 +187,10 @@ func main() {
 			os.Exit(0)
 		case nad == "info":
 			info()
+		case nad == "random":
+			random()
 		default:
 			fmt.Printf("command %s does not exist, type help for a list of commands", nad)
 		}
 	}
-
 }
