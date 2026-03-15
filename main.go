@@ -4,15 +4,16 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/fatih/color"
 	"github.com/klauspost/cpuid/v2"
 )
 
-func fetch() { //analog neofetch
+func fetch() { //analog fastfetch
 	fmt.Println("----------------------------") //system information
-	fmt.Println("OS: Void Space V0.5")
+	fmt.Println("OS: Void Space V0.6")
 	fmt.Println("Cpu", cpuid.CPU.BrandName)
 	fmt.Println("----------------------------")
-	art := `        
+	art := color.BlueString(`        
       @@****@@      
    @%**********#@   
   %*  +*******  *%    
@@ -24,7 +25,7 @@ func fetch() { //analog neofetch
   @@@*        +@@@  
    @@@@@@@@@@@@@@   
       @@@@@@@@      
-	`
+	`)
 	fmt.Println(art)
 }
 
@@ -121,21 +122,33 @@ func main() {
 
 } */
 
+func info() {
+	fmt.Println("-------------------------------")
+	fmt.Println("OS: Void Space")
+	fmt.Println("Version: V0.6")
+	fmt.Println("Created by: pigetchi")
+	fmt.Println("Vritten in: GO")
+	fmt.Println("License: MIT")
+	fmt.Println("-------------------------------")
+}
+
 func help() {
 	fmt.Println("math - calculator")
 	fmt.Println("fetch - system information")
 	fmt.Println("help - available commands")
 	fmt.Println("sample - create a template Go")
+	fmt.Println("info - information about the program")
 	fmt.Println("exit - exit")
 }
 
 func main() {
+	krasivo := color.GreenString("V.S.│~ ")
 	var nad string
 	fetch()
 
 	for {
 		fmt.Println(" ")
-		fmt.Print("V.S.│~ ")
+		fmt.Print(krasivo)
 		fmt.Scan(&nad)
 
 		switch {
@@ -149,6 +162,8 @@ func main() {
 			sample()
 		case nad == "exit":
 			os.Exit(0)
+		case nad == "info":
+			info()
 		default:
 			fmt.Printf("command %s does not exist, type help for a list of commands", nad)
 		}
