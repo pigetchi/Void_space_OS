@@ -10,27 +10,28 @@ import (
 	"github.com/klauspost/cpuid/v2"
 )
 
-var level int
-var xp int
-var name string
-
 func fetch() { //analog fastfetch
 	fmt.Println("----------------------------") //system information
-	fmt.Println("OS: Void Space V0.7")
+	fmt.Println("OS: Void Tree V0.8")
 	fmt.Println("Cpu", cpuid.CPU.BrandName)
 	fmt.Println("----------------------------")
-	art := color.BlueString(`        
-      @@****@@      
-   @%**********#@   
-  %*  +*******  *%    
-@%****************%@ 
-@#****************#@
-@%################%@
-@@@@@@@@@@@@@@@@@@@@
-@@@@@          @@@@@
-  @@@*        +@@@  
-   @@@@@@@@@@@@@@   
-      @@@@@@@@      
+	art := color.GreenString(`        
+              @@              
+            @@  @@            
+          @@@@@@@ @@          
+         @@@@    @@@@         
+        @@@@      @@@@        
+       @@    @@@@    @@       
+     @@@   @@    @@   @@@     
+     @@  @@@      @@@  @@     
+    @@@@@@          @@@@@@    
+ @@@@@@@     @@@@     @@@@@@@ 
+ @ @@@     @@    @@     @@@ @ 
+ @@@     @@@      @@@     @@@ 
+ @@    @@@    @@    @@@    @@ 
+  @@ @@@    @@  @@    @@@ @@  
+   @@@    @@@     @@    @@@@  
+    @@@@@@@@@@@@@@@@@@@@@@      
 	`)
 	fmt.Println(art)
 }
@@ -85,53 +86,10 @@ func main() {
 
 }
 
-/*func translator() {
-	var gaster map[string]string = map[string]string{
-		"A": "✌",
-		"B": "👌",
-		"C": "👍",
-		"D": "👎",
-		"E": "☜",
-		"F": "☞",
-		"G": "☝",
-		"H": "☟",
-		"I": "✋",
-		"J": "☺",
-		"K": "😐",
-		"L": "☹",
-		"M": "💣",
-		"N": "☠",
-		"O": "⚐",
-		"P": "🏱",
-		"Q": "✈",
-		"R": "☼",
-		"S": "💧",
-		"T": "❄",
-		"U": "🕆",
-		"V": "✞",
-		"W": "🕈",
-		"X": "✠",
-		"Y": "✡",
-		"Z": "☪",
-		"1": "📂",
-		"2": "📄",
-		"3": "🗏",
-		"4": "🗐",
-		"5": "🗄",
-		"6": "⌛",
-		"7": "🖮",
-		"8": "🖰",
-		"9": "🖲",
-		"0": "📁",
-	}
-	text := "HELLO"
-
-} */
-
 func info() {
 	fmt.Println("-------------------------------")
-	fmt.Println("OS: Void Space")
-	fmt.Println("Version: V0.7")
+	fmt.Println("OS: Void Tree")
+	fmt.Println("Version: V0.8")
 	fmt.Println("Created by: pigetchi")
 	fmt.Println("Vritten in: GO")
 	fmt.Println("License: MIT")
@@ -154,6 +112,17 @@ func random() {
 	}
 }
 
+func user() {
+	var name string
+	var nad string
+	fmt.Println("Do you want to create/change a name?")
+	fmt.Scan(&nad)
+	if nad == "yes" {
+		fmt.Scan(&name)
+	}
+	os.WriteFile("player.txt", []byte(name), 0644)
+}
+
 func help() {
 	fmt.Println("math - calculator")
 	fmt.Println("fetch - system information")
@@ -161,13 +130,17 @@ func help() {
 	fmt.Println("sample - create a template Go")
 	fmt.Println("info - information about the program")
 	fmt.Println("random - guess the number")
+	fmt.Println("name - see your name")
 	fmt.Println("exit - exit")
 }
 
 func main() {
-	krasivo := color.GreenString("V.S.│~ ")
+	username, _ := os.ReadFile("player.txt")
+	krasivo := color.GreenString("🌿│ ~ ")
 	var nad string
 	fetch()
+	user()
+	fmt.Println("Hello,", string(username))
 
 	for {
 		fmt.Println(" ")
@@ -189,6 +162,8 @@ func main() {
 			info()
 		case nad == "random":
 			random()
+		case nad == "name":
+			fmt.Println(string(username))
 		default:
 			fmt.Printf("command %s does not exist, type help for a list of commands", nad)
 		}
